@@ -1,0 +1,103 @@
+{% extends "Hospital/index.html" %}
+
+{% block content %}
+{% load static %}
+<body style="background: None;">
+
+ <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark " id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger ml-5" href="">Hospital System Management</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{% url 'logout' %}">Log out</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+ <div class="Sidebar" style="background: dark;">
+   <div class="row">
+
+
+     <div class="col-md-0 bg-success" >
+       <div class="row">
+         <div class="container text-center offset-lg-2"> <img src="{% static 'Hospital/images/me.png' %}" class="mr-5 rounded-circle" alt="me"></div>
+       </div>
+
+         <h4 class="text-capitalize mt-2 text-center text-white">Admin {{ request.user }}</h4>
+
+       <div class="row">
+          <div class="container text-center mt-5">
+         <a href="{% url 'admin_home' %}" class="btn bg-success mb-2 ml-3" style="width: 300px;"><h5 class="text-white">Dashbord</h5></a><br>
+         <a href="{% url 'admin_home_doctor' %}" class="btn bg-success mb-2 ml-3 text-white" style="width: 300px;"><h5 class="text-white">Doctor</h5></a><br>
+         <a href="{% url 'admin_home_patient' %}" class="btn bg-success mb-2 ml-3 text-white" style="width: 300px;"><h5 class="text-white">Patient</h5></a><br>
+         <a href="{% url 'admin_home_appointment' %}" class="btn bg-success mb-2 ml-3 text-white" style="width: 300px;"><h5 class="text-white">Appointment</h5></a><br>
+       </div>
+
+       </div>
+
+     </div>
+
+     <div class="col-md-9 ">
+       <div class="container mt-5">
+              <div class="row">
+                <div class="col">
+                  <div class="card" style="background: #38A7E0;">
+                    <div class="card-block">
+                      <a href="{% url 'admin_view_appointment' %}">
+                        <h6 class="btn m-b-20 text-center mt-3 text-white">View Appointment</h6>
+                      </a>
+                      <br>
+                      <h2 class="text-right"><i class="fas fa-user-nurse f-left"></i></h2>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="card" style="background: #4BED1E;">
+                    <div class="card-block">
+                      <a href="{% url 'admin_book_appointment' %}">
+                        <h6 class="btn m-b-20 text-center mt-3 text-white">Book Appointment</h6>
+                      </a>
+                      <br>
+                      <h2 class="text-right"><i class="fas fa-user-plus f-left"></i></h2>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="card" style="background: #F7F307;">
+                    <div class="card-block">
+                      <a href="{% url 'admin_view_appointment_approval' %}">
+                        <h6 class="btn m-b-20 text-center mt-3 text-white">Approve Appointment</h6>
+                      </a>
+                      <br>
+                      <h2 class="text-right"><i class="fas fa-check-circle f-left"></i></h2>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+     </div>
+
+       </div>
+     </div>
+   </div>
+ </div>
+
+
+
+ </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,289 @@
+{% extends "Hospital/index.html" %}
+
+{% block content %}
+{% load static %}
+<head>
+  <meta charset="utf-8">
+  <title>Discharge Patient</title>
+
+  <style>
+    .invoice-box {
+      max-width: 800px;
+      margin: auto;
+      padding: 30px;
+      border: 1px solid #eee;
+      box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+      font-size: 16px;
+      line-height: 24px;
+      font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+      color: #555;
+    }
+
+    .invoice-box table {
+      width: 100%;
+      line-height: inherit;
+      text-align: left;
+    }
+
+    .invoice-box table td {
+      padding: 5px;
+      vertical-align: top;
+    }
+
+    .invoice-box table tr td:nth-child(2) {
+      text-align: right;
+    }
+
+    .invoice-box table tr.top table td {
+      padding-bottom: 20px;
+    }
+
+    .invoice-box table tr.top table td.title {
+      font-size: 45px;
+      line-height: 45px;
+      color: #333;
+    }
+
+    .invoice-box table tr.information table td {
+      padding-bottom: 40px;
+    }
+
+    .invoice-box table tr.heading td {
+      background: #eee;
+      border-bottom: 1px solid #ddd;
+      font-weight: bold;
+    }
+
+    .invoice-box table tr.details td {
+      padding-bottom: 20px;
+    }
+
+    .invoice-box table tr.item td {
+      border-bottom: 1px solid #eee;
+    }
+
+    .invoice-box table tr.item.last td {
+      border-bottom: none;
+    }
+
+    .invoice-box table tr.total td:nth-child(2) {
+      border-top: 2px solid #eee;
+      font-weight: bold;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .invoice-box table tr.top table td {
+        width: 100%;
+        display: block;
+        text-align: center;
+      }
+
+      .invoice-box table tr.information table td {
+        width: 100%;
+        display: block;
+        text-align: center;
+      }
+    }
+
+    /** RTL **/
+    .rtl {
+      direction: rtl;
+      font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+    }
+
+    .rtl table {
+      text-align: right;
+    }
+
+    .rtl table tr td:nth-child(2) {
+      text-align: left;
+    }
+
+    .menu {
+      top: 50px;
+    }
+
+    .download {
+      text-align: center;
+      display: block;
+    }
+  </style>
+</head>
+<body style="background: None;">
+
+ <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark " id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger ml-5" href="">Hospital System Management</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{% url 'logout' %}">Log out</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+ <div class="Sidebar" style="background: dark;">
+   <div class="row">
+
+
+     <div class="col-md-0 bg-success" >
+       <div class="row">
+         <div class="container text-center offset-lg-2"> <img src="{% static 'Hospital/images/me.png' %}" class="mr-5 rounded-circle" alt="me"></div>
+       </div>
+
+         <h4 class="text-capitalize mt-2 text-center text-white">Admin {{ request.user }}</h4>
+
+       <div class="row">
+          <div class="container text-center mt-5">
+         <a href="{% url 'admin_home' %}" class="btn bg-success mb-2 ml-3" style="width: 300px;"><h5 class="text-white">Dashbord</h5></a><br>
+         <a href="{% url 'admin_home_doctor' %}" class="btn bg-success mb-2 ml-3 text-white" style="width: 300px;"><h5 class="text-white">Doctor</h5></a><br>
+         <a href="{% url 'admin_home_patient' %}" class="btn bg-success mb-2 ml-3 text-white" style="width: 300px;"><h5 class="text-white">Patient</h5></a><br>
+         <a href="{% url 'admin_home_appointment' %}" class="btn bg-success mb-2 ml-3 text-white" style="width: 300px;"><h5 class="text-white">Appointment</h5></a><br>
+       </div>
+
+       </div>
+
+     </div>
+
+     <div class="col-md-9 ">
+
+
+
+            <br><br><br>
+
+            <div class="invoice-box">
+              <form method="post">
+              <table cellpadding="0" cellspacing="0">
+                <tr class="top">
+                  <td colspan="2">
+                    <table>
+                      <tr>
+                        <td class="title">
+                          <h1>Hospital Management</h1>
+                        </td>
+
+                        <td>
+
+                          Admit Date: {{ patient.added_date.date }}<br>
+                          Release Date: {{ today }}<br>
+                          Days Spent: {{ day_spent }}
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+
+                <tr class="information">
+                  <td colspan="2">
+                    <table>
+                      <tr>
+                        <td>
+                          <b>Patient Name :</b> {{ patient.name }}<br>
+                          <b>Patient Mobile :</b> {{ patient.mobile }}<br>
+                          <b>Patient Addres :</b> {{ patient.address }}<br>
+                        </td>
+                        <td>
+                            <b>Doctor Name :</b><br>
+                            {{ doctor_name }}<br>
+                        </td>
+
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+
+                <tr class="heading">
+                  <td>
+                    Disease and Symptoms
+                  </td>
+                  <td>
+
+                  </td>
+
+                </tr>
+
+                <tr class="details">
+                  <td>
+                    {{patient.symptom}}
+                  </td>
+                </tr>
+                <tr class="heading">
+                  <td>
+                    Item
+                  </td>
+
+                  <td>
+                    Price
+                  </td>
+                </tr>
+
+                <tr class="item">
+                  <td>
+                    Room Charge of {{day_spent}} Days
+                  </td>
+
+                  <td>
+                    {{ room_charge }}
+                  </td>
+                </tr>
+
+                  <tr class="item">
+                  <td>
+                    Doctor Fee
+                  </td>
+
+                  <td>
+                    {{ doctor_fee}}
+                  </td>
+                </tr>
+
+                <tr class="item">
+                  <td>
+                    Medicine Cost
+                  </td>
+
+                  <td>
+                    {{ medecine_cost }}
+                  </td>
+                </tr>
+
+                <tr class="item last">
+                  <td>
+                    Other Charge
+                  </td>
+
+                  <td>
+                    {{ Other_charge}}
+                  </td>
+                </tr>
+                </form>
+
+                <tr class="total">
+                  <td></td>
+
+                  <td>
+                    Total Cost: {{ total }}
+                  </td>
+                </tr>
+
+              </table>
+            </div>
+            <br><br>
+            <div class="text-center">
+              <a class="btn btn-danger mb-5" href="#">Download</a>
+            </div>
+
+
+            </div>
+       </div>
+     </div>
+   </div>
+ </div>
+
+{% endblock %}

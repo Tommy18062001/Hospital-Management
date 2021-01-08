@@ -1,0 +1,144 @@
+{% extends "Hospital/index.html" %}
+
+{% block content %}
+{% load static %}
+<body style="background: None;">
+
+ <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark " id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger ml-5" href="">Hospital System Management</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{% url 'patient_logout' %}">Log out</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+ <div class="Sidebar" style="background: dark;">
+   <div class="row">
+
+
+     <div class="col-md-0 bg-success" >
+       <div class="row">
+         <div class="container text-center offset-lg-2"> <img src="{% static 'Hospital/images/me.png' %}" class="mr-5 rounded-circle" alt="me"></div>
+       </div>
+
+         <h4 class="text-capitalize mt-2 text-center text-white">Patient {{ request.user }}</h4>
+
+       <div class="row">
+          <div class="container text-center mt-5">
+         <a href="{% url 'patient_home' %}" class="btn bg-success mb-2 ml-3" style="width: 300px;"><h5 class="text-white">Dashbord</h5></a><br>
+         <a href="{% url 'patient_appointment' %}" class="btn bg-success mb-2 ml-3 text-white" style="width: 300px;"><h5 class="text-white">Appointment</h5></a><br>
+         <a href="{% url 'patient_view_discharge' %}" class="btn bg-success mb-2 ml-3 text-white" style="width: 300px;"><h5 class="text-white">Discharge</h5></a><br>
+      </div>
+
+       </div>
+
+     </div>
+
+     <div class="col-md-9 ">
+       <div class="container mt-5">
+              <div class="row">
+
+                <div class="col">
+                  <div class="card" style="background: #38A7E0;">
+                    <div class="card-block">
+                        <h6 class="mb-4 m-b-20 text-center mt-3 text-white">Doctor Name:</h6>
+                        <h2 class="text-center text-white">{{ doctor.get_name }}</h2>
+                      <br>
+                      <h2 class="text-right"><i class="fas fa-user-nurse f-left"></i></h2>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="card" style="background: #4BED1E;">
+                    <div class="card-block">
+                        <h6 class="mb-4 m-b-20 text-center mt-3 text-white">Symptom:
+                        <h2 class="text-center text-white">{{ patient.symptom }}</h4></h6>
+                      <br>
+                      <h2 class="text-right"><i class="fas fa-check-circle f-left"></i></h2>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="card " style="background: #FC6E57;">
+                    <div class="card-block">
+                        <h6 class="mb-4 m-b-20 text-center mt-3 text-white">Doctor Mobile:</h6>
+                        <h2 class="text-center text-white">{{ doctor.mobile }}</h2>
+                      <br>
+                      <h2 class="text-right"><i class="fas fa-user-md f-left"></i></h2>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+
+              <div class="row mt-5">
+
+                <div class="col">
+                  <div class="card" style="background: #38A7E0;">
+                    <div class="card-block">
+                        <h6 class="mb-4 m-b-20 text-center mt-3 text-white">Doctor Address:</h6>
+                        <h2 class="text-center text-white">{{ doctor.address }}</h4>
+                      <br>
+                      <h2 class="text-right"><i class="fas fa-user-nurse f-left"></i></h2>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="card" style="background: #4BED1E;">
+                    <div class="card-block">
+                        <h6 class="m-b-20 text-center mt-3 text-white mb-4">Doctor Department:</h6>
+                        <h2 class="text-center text-white">{{ doctor.speciality }}</h2>
+                        <br>
+                      <h2 class="text-right"><i class="fas fa-check-circle f-left"></i></h2>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="card " style="background: #FC6E57;">
+                    <div class="card-block">
+                        <h6 class="m-b-20 text-center mt-3 text-white mb-4">Admission Date:</h6>
+                        <h2 class="text-center text-white">{{ patient.added_date.date }}</h2>
+                      <br>
+                      <h2 class="text-right"><i class="fas fa-user-md f-left"></i></h2>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+
+
+
+            </div>
+
+
+     </div>
+
+       </div>
+     </div>
+   </div>
+ </div>
+
+
+
+ </div>
+
+
+
+{% endblock %}

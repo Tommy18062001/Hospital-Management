@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Hospital System Management</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'Hospital/vendor/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+  <link href="{% static 'Hospital/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'Hospital/vendor/bootstrap/css/bootstrap-grid.css' %}" rel="stylesheet">
+  <link href="{% static 'Hospital/vendor/bootstrap/css/bootstrap-grid.min.css' %}" rel="stylesheet">
+  <link href="{% static 'Hospital/vendor/bootstrap/css/bootstrap-reboot.css' %}" rel="stylesheet">
+  <link href="{% static 'Hospital/vendor/bootstrap/css/bootstrap-reboot.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'Hospital/css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'Hospital/css/Swiper-Slider-Card-For-Blog-Or-Product-1.css' %}">
+  <link rel="stylesheet" href="{% static 'Hospital/css/Swiper-Slider-Card-For-Blog-Or-Product.css' %}">
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'Hospital/css/scrolling-nav.css' %}" rel="stylesheet">
+
+</head>
+
+{% block content %}
+<body id="page-top">
+
+ <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-transparent " id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger ml-5" href="{% url 'home' %}">Hospital System Management</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{% url 'login' %}">Admin</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{% url 'doctor_login' %}">Doctor</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{% url 'patient_login' %}">Patient</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
+<div class="container">
+    <div class="master mr-5" >
+        <p style="color: white;">How can we help you</p>
+      <a href="{% url 'patient_login' %}" class="btn btn-warning">Schedule an appointment</a>
+    </div>
+
+</div>
+
+  {% endblock %}
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark ">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+
+
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'Hospital/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'Hospital/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'Hospital/vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>
+  <script src="{% static 'Hospital/vendor/bootstrap/js/bootstrap.js' %}"></script>
+  <script src="{% static 'Hospital/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="{% static 'Hospital/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+  <!-- Custom JavaScript for this theme -->
+  <script src="{% static 'Hospital/js/scrolling-nav.js' %}"></script>
+  <script src="{% static 'Hospital/js/Swiper-Slider-Card-For-Blog-Or-Product.js' %}"></script>
+
+</body>
+
+</html>

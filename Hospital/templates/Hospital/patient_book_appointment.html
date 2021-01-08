@@ -1,0 +1,82 @@
+{% extends "Hospital/index.html" %}
+
+{% block content %}
+{% load static %}
+<body style="background: None;">
+
+ <!-- Navigation -->
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark " id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger ml-5" href="">Hospital System Management</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{% url 'patient_logout' %}">Log out</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+ <div class="Sidebar" style="background: dark;">
+   <div class="row">
+
+
+     <div class="col-md-0 bg-success" >
+       <div class="row">
+         <div class="container text-center offset-lg-2"> <img src="{% static 'Hospital/images/me.png' %}" class="mr-5 rounded-circle" alt="me"></div>
+       </div>
+
+         <h4 class="text-capitalize mt-2 text-center text-white">Patient {{ request.user }}</h4>
+
+       <div class="row">
+          <div class="container text-center mt-5">
+         <a href="{% url 'patient_home' %}" class="btn bg-success mb-2 ml-3" style="width: 300px;"><h5 class="text-white">Dashbord</h5></a><br>
+         <a href="{% url 'patient_appointment' %}" class="btn bg-success mb-2 ml-3 text-white" style="width: 300px;"><h5 class="text-white">Appointment</h5></a><br>
+         <a href="{% url 'patient_view_discharge' %}" class="btn bg-success mb-2 ml-3 text-white" style="width: 300px;"><h5 class="text-white">Discharge</h5></a><br>
+      </div>
+
+       </div>
+
+     </div>
+
+     <div class="col-md-9 ">
+
+         <!-- content -->
+         <div class="container register-form">
+           <form method="post">
+             {% csrf_token %}
+              <div class="note mt-5 navbar bg-primary">
+                <p class="navbar-brand offset-lg-4">Book Appointment</p>
+              </div>
+              <div class="form-content mt-5 mb-5">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                        {{ form.description }}
+                    </div>
+                    <div class="form-group ">
+                        {{ form.doctor_id }}
+                    </div>
+                    <div class="form-group ">
+                        {{ form.patient_id }}
+                    </div>
+
+                  </div>
+
+                </div>
+                <button type="submit" class="btn btn-primary">Book</button>
+              </div>
+           </form>
+  </div>
+           <!-- end content -->
+     </div>
+   </div>
+ </div>
+
+
+
+{% endblock %}

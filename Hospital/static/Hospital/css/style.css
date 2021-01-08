@@ -1,0 +1,16 @@
+
+body {
+    background: url("../images/za.jpg") no-repeat ;
+    background-position: center center;
+    background-size: cover;
+    }
+
+.master {
+    padding-top: 200px;
+    padding-bottom: 200px;
+    font-size: 40px;
+    font-style: italic;
+    line-height: 40px;
+    margin-bottom: 25px;
+    font-family: Droid Serif,Helvetica Neue,Helvetica,Arial,sans-serif
+}

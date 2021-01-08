@@ -1,0 +1,65 @@
+{% extends "Hospital/index.html" %}
+
+{% block content %}
+<body style="background: None;">
+
+ <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark " id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger ml-5" href="{% url 'home' %}">Hospital System Management</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{% url 'login' %}">Admin</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{% url 'doctor_login' %}">Doctor</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{% url 'patient_login' %}">Patient</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<div class="container">
+   <div class="row">
+       <div class="col">
+           <header class="">
+              <div class="text-center">
+                <h1>Doctor Login</h1>
+              </div>
+          </header>
+          </div>
+   </div>
+    <div class="row mb-5">
+        <div class="col offset-lg-4">
+            <form method="post">
+
+                <input type="text" class="form-control mb-3" name="username" placeholder="Username" style="width:50%; box-shadow: 3px 3px 4px rgba(0,0,0,0.2);
+">
+                <input type="password" class="form-control mb-3" name="password" placeholder="Password" style="width:50%; box-shadow: 3px 3px 4px rgba(0,0,0,0.2) ;">
+
+                <button class="btn btn-primary mb-3" type="submit" style="width:50%;">Log In</button>
+
+                <br><a href="{% url 'doctor_register' %}">Don't have an account yet, Sign up</a>
+
+                <br>
+                <hr>
+                <p> {% for message in messages %}
+                    {{ message }}
+                {% endfor %}</p>
+            </form>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
